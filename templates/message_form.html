@@ -1,0 +1,58 @@
+<style>
+  label {
+    display:block;
+    margin: 5px;
+  }
+
+  input {
+    margin: 5px;
+    width: 125px;
+  }
+
+  textarea {
+    margin: 5px;
+  }
+
+  input[readonly] {
+    border: none;
+  }
+
+  select:invalid {
+    color: gray;
+  }
+</style>
+
+<form method="POST" action="/message/send">
+    <label for="sender">From:</label>
+    <input name="sender" readonly value={{ sender }}>
+
+    <label for="message">Message:</label>
+    <textarea name="message"></textarea>
+
+    <label for="recipient_country_code">Country</label>
+    <select name="recipient_country_code">
+      <option value="" disabled selected>Select a country</option>
+      <option value="1">Canada</option>
+      <option value="1">USA</option>
+    </select>
+    <label for="recipient_10_digit_num">To:</label>
+    <input name="recipient_10_digit_num" pattern="[0-9]{10}" title="10 digit number">
+    <input type="submit">
+</form>
+
+<script>
+
+document.addEventListener('DOMContentLoaded', (event) => {
+
+  let sender = document.querySelector('input[name="sender"]').value
+
+  console.log(sender)
+  let formattedSenderNum = sender.replace(/(\d{1})(\d{3})(\d{3})(\d{4})/, '+$1 ($2) $3-$4')
+
+  console.log(formattedSenderNum)
+
+  document.querySelector('input[name="sender"]').value = formattedSenderNum
+});
+
+
+</script>
