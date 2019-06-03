@@ -1,26 +1,4 @@
-<style>
-  label {
-    display:block;
-    margin: 5px;
-  }
-
-  input {
-    margin: 5px;
-    width: 125px;
-  }
-
-  textarea {
-    margin: 5px;
-  }
-
-  input[readonly] {
-    border: none;
-  }
-
-  select:invalid {
-    color: gray;
-  }
-</style>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/message_form.css') }}">
 
 <form method="POST" action="/message/send">
     <label for="sender">From:</label>
@@ -40,19 +18,4 @@
     <input type="submit">
 </form>
 
-<script>
-
-document.addEventListener('DOMContentLoaded', (event) => {
-
-  let sender = document.querySelector('input[name="sender"]').value
-
-  console.log(sender)
-  let formattedSenderNum = sender.replace(/(\d{1})(\d{3})(\d{3})(\d{4})/, '+$1 ($2) $3-$4')
-
-  console.log(formattedSenderNum)
-
-  document.querySelector('input[name="sender"]').value = formattedSenderNum
-});
-
-
-</script>
+<script type= "text/javascript" src="{{ url_for('static',filename='scripts/message_form.js') }}"></script>

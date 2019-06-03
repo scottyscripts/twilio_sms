@@ -1,0 +1,21 @@
+label {
+  display:block;
+  margin: 5px;
+}
+
+input {
+  margin: 5px;
+  width: 125px;
+}
+
+textarea {
+  margin: 5px;
+}
+
+input[readonly] {
+  border: none;
+}
+
+select:invalid {
+  color: gray;
+}
